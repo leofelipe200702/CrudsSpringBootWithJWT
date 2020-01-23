@@ -6,15 +6,23 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import io.swagger.annotations.ApiModelProperty;
+
 @Entity
 public class Todo {
 	
+	@ApiModelProperty(value = "Código da tarefa")
 	@Id
 	@GeneratedValue
 	private Long id;
+	
+	@ApiModelProperty(value = "Usuário proprietário da tarefa")
 	private String username;
+	@ApiModelProperty(value = "Descrição da tarefa")
 	private String description;
+	@ApiModelProperty(value = "Data Alvo da tarefa")
 	private Date targetDate;
+	@ApiModelProperty(value = "Conclusão da tarefa")
 	private boolean isDone;
 
 	public Todo() {

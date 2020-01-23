@@ -1,4 +1,4 @@
-package angular.with.spring.jwt;
+package angular.with.spring.config.jwt;
 
 import java.util.ArrayList;
 import java.util.Collection;

@@ -20,6 +20,7 @@ import angular.with.spring.domain.entity.Usuario;
 import angular.with.spring.domain.exception.ExcecaoEntidadeEmUsoException;
 import angular.with.spring.domain.exception.ExcecaoEntidadeNaoEncontradaException;
 import angular.with.spring.domain.service.UsuarioService;
+import io.swagger.annotations.ApiOperation;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/usuarios")
@@ -28,13 +29,15 @@ public class UsuarioController {
 
 	@Autowired
 	private UsuarioService usuarioService;
-
-	@GetMapping()
+	
+	@ApiOperation(value = "Retorna uma lista de Usuários")
+	@GetMapping(produces="application/json")
 	public List<Usuario> getAllUsuarios() {
 		return this.usuarioService.findAll();
 	}
 	
-	@GetMapping("/{idUsuario}")
+	@ApiOperation(value = "Retorna um usuário específico por Id")
+	@GetMapping(value = "/{idUsuario}",produces="application/json")
 	public ResponseEntity<Usuario> findById(@PathVariable("idUsuario") Long idUsuario) {
 		Optional<Usuario> usuario = usuarioService.findById(idUsuario);
 
@@ -45,7 +48,8 @@ public class UsuarioController {
 		return ResponseEntity.notFound().build();
 	}
 	
-	@DeleteMapping("/{idUsuario}")
+	@ApiOperation(value = "Apaga um usuário específico por Id")
+	@DeleteMapping(value = "/{idUsuario}",produces="application/json")
 	public ResponseEntity<Usuario> remove(@PathVariable("idUsuario") Long idUsuario) {
 
 		try {
@@ -61,7 +65,8 @@ public class UsuarioController {
 		}
 	}
 	
-	@PutMapping("/{idUsuario}")
+	@ApiOperation(value = "Altera um usuário específico por Id")
+	@PutMapping(value = "/{idUsuario}",produces="application/json")
 	public ResponseEntity<?> update(@PathVariable("idUsuario") Long idUsuario,
 			@RequestBody Usuario pUsuario) {
 
@@ -85,10 +90,13 @@ public class UsuarioController {
 		}
 	}
 	
-	@PostMapping
+	@ApiOperation(value = "Inclui um novo usuário")
+	@PostMapping(produces="application/json")
 	public ResponseEntity<?> save(@RequestBody Usuario usuario) {
 
 		try {
+			usuario.setPassword( usuario.getPassword());
+			
 			usuario = usuarioService.save(usuario);
 			return ResponseEntity.status(HttpStatus.CREATED).body(usuario);
 		} catch (ExcecaoEntidadeNaoEncontradaException e) {

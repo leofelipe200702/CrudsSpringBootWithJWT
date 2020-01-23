@@ -1,4 +1,4 @@
-package angular.with.spring.jwt.resource;
+package angular.with.spring.config.jwt.resource;
 
 import java.io.Serializable;
 

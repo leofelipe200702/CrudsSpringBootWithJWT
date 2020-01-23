@@ -1,4 +1,4 @@
-package angular.with.spring.jwt.resource;
+package angular.with.spring.config.jwt.resource;
 
 import java.util.Objects;
 
@@ -21,8 +21,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import angular.with.spring.jwt.JwtTokenUtil;
-import angular.with.spring.jwt.JwtUserDetails;
+import angular.with.spring.config.jwt.JwtTokenUtil;
+import angular.with.spring.config.jwt.JwtUserDetails;
 
 @RestController
 @CrossOrigin(origins="http://localhost:4200")

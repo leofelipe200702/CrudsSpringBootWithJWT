@@ -1,4 +1,4 @@
-package angular.with.spring.jwt;
+package angular.with.spring.config.jwt;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -28,6 +28,11 @@ public class JWTWebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private UserDetailsService jwtInMemoryUserDetailsService;
+    
+    private static final String[] PUBLIC_MATCHES = {"/v2/**", "/webjars/**", "/swagger-ui.html",
+    "/swagger-resources/**"};
+    
+    private static final String[] PUBLIC_MATCHES_POST = {"/usuarios/signup/**"};
 
     @Autowired
     private JwtTokenAuthorizationOncePerRequestFilter jwtAuthenticationTokenFilter;
@@ -59,8 +64,11 @@ public class JWTWebSecurityConfig extends WebSecurityConfigurerAdapter {
             .csrf().disable()
             .exceptionHandling().authenticationEntryPoint(jwtUnAuthorizedResponseAuthenticationEntryPoint).and()
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-            .authorizeRequests()
-            .anyRequest().authenticated();
+            .authorizeRequests().antMatchers(PUBLIC_MATCHES).permitAll()
+            .antMatchers(PUBLIC_MATCHES_POST).permitAll().anyRequest()
+            .authenticated();
+                   
+        
 
        httpSecurity
             .addFilterBefore(jwtAuthenticationTokenFilter, UsernamePasswordAuthenticationFilter.class);

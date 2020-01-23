@@ -12,32 +12,39 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
-@Table(name = "tb_telefone")
+@Table(name = "telefone")
 public class Telefone {
-
+	
+	@ApiModelProperty(value = "Sequencial Interno do Telefone")
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@EqualsAndHashCode.Include
 	private Long id;
-
+	
+	@ApiModelProperty(value = "Número do Telefone")
 	@Column(name = "number", nullable = false)
 	private String number;
-
+	
+	@ApiModelProperty(value = "Código de Área do Telefone")
 	@Column(name = "area_code", nullable = false)
 	private String areaCode;
-
+	
+	@ApiModelProperty(value = "Código do País do Telefone")
 	@Column(name = "country_code", nullable = false)
 	private String countryCode;
-
+	
+	@ApiModelProperty(value = "Tipo do Telefone")
 	@Column(name = "tp_telefone", nullable = false)
 	private String tipoTelefone;
 	
+	@ApiModelProperty(value = "Código do Usuário Proprietário do Telefone")
 	@JsonBackReference
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_usuario", nullable = false)
