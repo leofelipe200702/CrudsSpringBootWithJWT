@@ -95,8 +95,7 @@ public class UsuarioController {
 	public ResponseEntity<?> save(@RequestBody Usuario usuario) {
 
 		try {
-			usuario.setPassword( usuario.getPassword());
-			
+						
 			usuario = usuarioService.save(usuario);
 			return ResponseEntity.status(HttpStatus.CREATED).body(usuario);
 		} catch (ExcecaoEntidadeNaoEncontradaException e) {
