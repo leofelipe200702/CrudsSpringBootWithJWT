@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import angular.with.spring.domain.entity.Usuario;
 import angular.with.spring.domain.exception.ExcecaoEntidadeEmUsoException;
 import angular.with.spring.domain.exception.ExcecaoEntidadeNaoEncontradaException;
+import angular.with.spring.domain.exception.ObjectNotFoundException;
 import angular.with.spring.domain.repository.UsuarioJpaRepository;
 
 @Service
@@ -41,6 +42,11 @@ public class UsuarioService {
 					String.format("O usuário de código %d está em uso e não pode ser excluído", idUsuario));
 		}
 	}
+	
+	public Usuario findByUsername(String username) {
+        return usuarioRepository.findByFirstName(username).orElseThrow(() -> new ObjectNotFoundException(
+                "Usuário não encontrado! Username: " + username + ", tipo " + Usuario.class.getName()));
+    }
 	
 	public Usuario save(Usuario pUsuario) {
 		return usuarioRepository.save(pUsuario);
