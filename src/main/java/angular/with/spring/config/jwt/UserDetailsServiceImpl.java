@@ -6,26 +6,28 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import angular.with.spring.domain.entity.Usuario;
-import angular.with.spring.domain.service.UsuarioService;
+import angular.with.spring.domain.entity.UserApplication;
+import angular.with.spring.domain.service.UsuarioSistemaService;
 
 @Service
-public class JwtInMemoryUserDetailsService implements UserDetailsService {
+public class UserDetailsServiceImpl implements UserDetailsService {
 	
   @Autowired
-  private UsuarioService userService;
+  private UsuarioSistemaService userService;
 
   @Override
   public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		
 	  
-	  Usuario user = userService.findByUsername(username);
+	  UserApplication user = userService.findByUsername(username);
       
 	  if (user == null)
           throw new UsernameNotFoundException(username);
             
-      return new JwtUserDetails(user.getId(), user.getFirstName(),
-    	        user.getPassword(), "ROLE_USER_2");
+   return new UserOfSystem(user.getUsername(), user.getPassword(), user.isActive(), user.getRoles());
+      
+      
+      
 	  
   }
 

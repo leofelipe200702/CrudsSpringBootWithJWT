@@ -21,5 +21,10 @@ insert into telefone (id,area_code,country_code,number,tp_telefone,id_usuario) v
 
 insert into telefone (id,area_code,country_code,number,tp_telefone,id_usuario) values (5,'81','55','30334563','Residencial',2);
 
-insert into telefone (id,area_code,country_code,number,tp_telefone,id_usuario) values (6,'81','55','31623465','Trabalho',2)
+insert into telefone (id,area_code,country_code,number,tp_telefone,id_usuario) values (6,'81','55','31623465','Trabalho',2);
 
+insert into usuario_sistema (id ,ativo ,email,senha,usuario) values(1,true,'admin@gmail.com','$2a$10$kn8rDXObrVJpvRRzU4dSaumEw2kGBG69zl8IMQDgraHDNrL3506Eu','admin');
+
+insert into permissao (id,descricao) values (1,'ROLE_ADMIN');
+
+insert into usuario_sistema_permissao values(1,1);

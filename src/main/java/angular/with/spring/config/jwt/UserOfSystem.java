@@ -13,13 +13,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import angular.with.spring.domain.entity.Role;
 
-/**
- * Classe UserOfSystem.java
- * 
- * @author <a href="mailto:viniciosarodrigues@gmail.com">Vinícios Rodrigues</a>
- * 
- * @since 15 de set de 2019
- */
 public class UserOfSystem implements UserDetails {
 
     /**
