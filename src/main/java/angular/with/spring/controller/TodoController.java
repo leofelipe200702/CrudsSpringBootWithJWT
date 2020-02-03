@@ -20,7 +20,7 @@ import angular.with.spring.domain.entity.Todo;
 import angular.with.spring.domain.repository.TodoJpaRepository;
 import io.swagger.annotations.ApiOperation;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://crudusers-angular.herokuapp.com")
 @RestController
 public class TodoController {
 

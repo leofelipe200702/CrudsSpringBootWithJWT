@@ -22,7 +22,7 @@ import angular.with.spring.domain.exception.ExcecaoEntidadeNaoEncontradaExceptio
 import angular.with.spring.domain.service.UsuarioService;
 import io.swagger.annotations.ApiOperation;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://crudusers-angular.herokuapp.com")
 @RequestMapping("/usuarios")
 @RestController
 public class UsuarioController {

@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 import angular.with.spring.config.jwt.JwtTokenUtil;
 
 @RestController
-@CrossOrigin(origins="http://localhost:4200")
+@CrossOrigin(origins="https://crudusers-angular.herokuapp.com")
 public class JwtAuthenticationRestController {
 
   @Value("${jwt.http.request.header}")
